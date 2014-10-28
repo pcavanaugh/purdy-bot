@@ -1,0 +1,16 @@
+{
+  "name": "purdy-bot",
+  "version": "1.0.0",
+  "description": "This is a GroupMe bot that does Purdy Conversions",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrick Cavanaugh",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "curlrequest": "^0.5.1",
+    "express": "^4.10.0"
+  }
+}
