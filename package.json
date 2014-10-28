@@ -13,6 +13,6 @@
     "curlrequest": "^0.5.1",
     "express": "^4.10.0",
     "jquery": "^2.1.1",
-    "jsdom": "^1.0.3"
+    "jsdom": "^0.11.1"
   }
 }
