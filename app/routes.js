@@ -37,7 +37,7 @@ module.exports = function(app) {
       time: parsedText[1],
       distance: parsedText[2],
       units: parsedText[3],
-      obj.all: false
+      all: false
     };
 
     if (parsedText.lenth === 5) {
