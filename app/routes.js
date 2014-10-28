@@ -1,16 +1,30 @@
 var http = require('http');
 var curl = require('curlrequest');
+var _ = require('underscore');
 var jsdom=require('jsdom');
 var $=require('jquery')(jsdom.jsdom().createWindow());
 
 module.exports = function(app) {
+
+  var events = [
+    '800m',
+    '1k',
+    '1500m',
+    '1 Mile',
+    '3k',
+    '2 Mile',
+    '5k',
+    '8k',
+    '10k'
+  ];
+
 
   //home page
   app.get('/', function(req, res) {
     res.send('Hello World');
   });
 
-  var botRegex = /purdy\s(\d*:?\d*)\s(\d*)(mi|m|k)/i;
+  var botRegex = /purdy\s(\d*:?\d*)\s(\d*)(mi|m|k)\s(--all)/i;
 
   function isBotRequest(text) {
     console.log(text);
@@ -19,11 +33,16 @@ module.exports = function(app) {
       return false;
     }
 
-    return {
+    obj = {
       time: parsedText[1],
       distance: parsedText[2],
-      units: parsedText[3]
+      units: parsedText[3],
+      obj.all: false
     };
+
+    if (parsedText.lenth === 5) {
+      obj.all = true;
+    }
   }
 
   var PURDY_URL = 'http://tools.runnerspace.com/results/tools_performance_predictor_ajax.php?time=10:00&dist=3200&units=m'
@@ -47,7 +66,10 @@ module.exports = function(app) {
         } 
         var dist = $(val).closest('td').prev().html();
         var time = $(val).html();
-        output += dist + ': ' + time +  '\n';
+
+        if (obj.all || _.contains(events, dist)) {
+          output += dist + ': ' + time +  '\n';
+        }
       });
 
       postGroupMeMessage(output);
