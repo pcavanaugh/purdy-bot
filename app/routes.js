@@ -75,7 +75,7 @@ module.exports = function(app) {
         }
       });
       console.log(output);
-      //postGroupMeMessage(output);
+      postGroupMeMessage(output);
     });
   }
 
