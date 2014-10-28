@@ -24,7 +24,7 @@ module.exports = function(app) {
     res.send('Hello World');
   });
 
-  var botRegex = /purdy\s(\d*:?\d*)\s(\d*)(mi|m|k)\s(--all)/i;
+  var botRegex = /purdy\s(\d*:?\d*)\s(\d*)(mi|m|k)/i;
 
   function isBotRequest(text) {
     console.log(text);
@@ -40,9 +40,12 @@ module.exports = function(app) {
       all: false
     };
 
-    if (parsedText.lenth === 5) {
+    if (text.indexOf('--all') >= 0) {
       obj.all = true;
     }
+
+    return obj;
+
   }
 
   var PURDY_URL = 'http://tools.runnerspace.com/results/tools_performance_predictor_ajax.php?time=10:00&dist=3200&units=m'
@@ -71,8 +74,8 @@ module.exports = function(app) {
           output += dist + ': ' + time +  '\n';
         }
       });
-
-      postGroupMeMessage(output);
+      console.log(output);
+      //postGroupMeMessage(output);
     });
   }
 
