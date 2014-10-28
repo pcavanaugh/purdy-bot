@@ -11,6 +11,8 @@
   "dependencies": {
     "body-parser": "^1.9.2",
     "curlrequest": "^0.5.1",
-    "express": "^4.10.0"
+    "express": "^4.10.0",
+    "jquery": "^2.1.1",
+    "jsdom": "^1.0.3"
   }
 }
